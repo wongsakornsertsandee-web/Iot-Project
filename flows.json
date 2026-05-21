@@ -1,0 +1,24 @@
+[
+    {
+        "id": "c58501f57e0e3fed",
+        "type": "function",
+        "z": "flow_finland_iot",
+        "name": "Cooling Control Logic",
+        "func": "// ดThe current temperature is sent directly from Helsinki, Finland.\nvar currentTemp = msg.payload.current.temperature_2m;\n\n// Create a new dataset for our IoT Automation system.\nmsg.payload = {\n    location: \"Helsinki Data Center Node (Finland)\",\n    temperature: currentTemp,\n    unit: \"Celsius\",\n    timestamp: new Date().toISOString()\n};\n\n// Automatic Electrical/Air Conditioning Control Logic (Automation Logic)\n// Assume that if the server room temperature in Finland exceeds 20 degrees Celsius, the system should send an alert.\nif (currentTemp > 20.0) {\n    msg.payload.cooling_status = \"❌ ALERT: Temperature High! Activating Emergency Fans.\";\n    msg.payload.system_integrity = \"WARNING\";\n} else {\n    msg.payload.cooling_status = \"✅ NORMAL: Safe Operating Temperature.\";\n    msg.payload.system_integrity = \"STABLE\";\n}\nmsg.payload = currentTemp; // ส่งเฉพาะตัวเลขอุณหภูมิเพียวๆ ออกไปให้ Dashboard\nreturn msg;",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 560,
+        "y": 180,
+        "wires": [
+            [
+                "715dfe8f1425d3ba",
+                "f67aefb7ae88421d",
+                "e01ac30814ebb291"
+            ]
+        ]
+    }
+]
