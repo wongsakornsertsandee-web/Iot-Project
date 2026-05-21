@@ -16,3 +16,9 @@ An automated cloud-based Industrial IoT (IIoT) monitoring and control system bui
 ```text
 [Time-Driven Inject Node] ➔ [HTTP REST Request] ➔ [JavaScript Control Logic] ➔ [Gauge Dashboard Node]
                                                                                 └ ➔ [Trend Chart Dashboard Node]
+
+### 📖 API Reference & Data Sources
+* **Data Provider:** Open-Meteo (Non-commercial Open weather API)
+* **Target Location:** Helsinki, Finland (Latitude: 60.1695, Longitude: 24.9354)
+* **Official Documentation:** [Open-Meteo API Response Specification](https://open-meteo.com/en/docs?latitude=60.1695&longitude=24.9354&timezone=GMT#api_response)
+* **Data Format:** RESTful JSON Object (Fetched synchronously via Node-RED HTTP Request)
